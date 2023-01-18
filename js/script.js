@@ -74,40 +74,60 @@ showArr.forEach((item) => {
 
 let tableArr = [
     {
-        name: 'Імя',
+        title: 'Імя',
+        city: ' Київ',
+        course: '2',
+        name: 'Вова',
     },
     {
-        name: 'Місто',
+        title: 'Місто',
+        city: ' Львів',
+        course: '1',
+        name: 'Вася',
     },
     {
-        name: 'Курс',
+        title: 'Курс',
+        city: ' Вінниця',
+        course: '5',
+        name: 'Віктор',
     },
 ];
 
 let body = document.querySelector('.three-task');
 let table = document.createElement('table');
-table.setAttribute('style', 'display: flex;flex-direction: column;max-width: 50%;margin: 100px auto;border: 1px solid #000;padding:50px');
+let tableHead = document.createElement('thead');
+let headTh = document.createElement('th');
+headTh.setAttribute('style', 'display: flex;')
+
+table.setAttribute('style', 'display: flex;flex-direction: column;max-width: 50%;margin: 100px auto;border: 1px solid #000;padding:50px border: 1px solid #000;');
 body.appendChild(table);
+table.appendChild(tableHead);
+tableHead.appendChild(headTh);
+
+tableArr.forEach((item) => {
+    let td = document.createElement('td');
+    td.setAttribute('style', 'border: 1px solid #000; font-size: 20px; padding: 5px;  width: 100%;')
+    td.innerText = item.title;
+    headTh.appendChild(td);
+})
+
 
 
 tableArr.forEach((item) => {
-    let input = document.createElement('input');
-    let label = document.createElement('label');
-    input.setAttribute('style', 'margin-top: 5px;margin-bottom: 20px;max-width: 50%;');
-    label.setAttribute('style', 'font-size: 20px;');
-    input.setAttribute('type', 'text');
-    label.innerText = item.name;
-    table.appendChild(label);
-    table.appendChild(input);
+    let headTr = document.createElement('tr');
+    headTr.setAttribute('style', 'display: flex;')
+    table.appendChild(headTr);
+    headTr.appendChild(document.createElement('td')).append(item.name);
+    headTr.appendChild(document.createElement('td')).append(item.city);
+    headTr.appendChild(document.createElement('td')).append(item.course);
 });
 
-let button = document.createElement('butoon');
-button.setAttribute('style', 'border: 1px solid #000;text-align:center;font-size: 20px;padding:20px 0 20px 0 ; max-width: 50%;')
-button.setAttribute('type', 'submit');
-button.innerText = 'Відправити';
-table.appendChild(button);
+    let e = document.querySelectorAll('td');
+    console.log(e);
+    e.forEach((item) => {
+        item.setAttribute('style', 'border: 1px solid #000; font - size: 20px; padding: 5px; width: 100%; text-align: center;')
+});
 
 
 
-console.log(table);
 
